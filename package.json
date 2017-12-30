@@ -1,0 +1,37 @@
+{
+  "name": "wzor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test:html",
+    "test:html": "glob-run nu-html-checker *.html",
+    "build": "npm run build:clean && npm run build:sass && npm run build:autoprefixer && npm run test",
+    "build:clean": "node_modules/.bin/rimraf css/*.css",
+    "build:sass": "sass --sourcemap=none --update sass/style.scss:css/style.css",
+    "build:autoprefixer": "autoprefixer-cli css/style.css",
+    "watch": "parallelshell \"npm run watch:sass\" \"npm run watch:autoprefixer\" \"npm run watch:browsersync\"",
+    "watch:browsersync": "browser-sync start --config bs-config.js",
+    "watch:autoprefixer": "onchange -d 100 css/style.css -- autoprefixer-cli -o css/style.prefixed.css css/style.css",
+    "watch:sass": "sass --watch sass/style.scss:css/style.css"
+  },
+  "dependencies": {
+    "browser": "^0.2.6",
+    "browser-sync": "^2.18.13",
+    "plugin": "^0.3.3",
+    "sync": "^0.2.5"
+  },
+  "devDependencies": {
+    "autoprefixer-cli": "^1.0.0",
+    "browser-sync": "^2.18.13",
+    "glob-run": "^0.1.6",
+    "node-sass": "^4.7.2",
+    "nu-html-checker": "^0.1.0",
+    "onchange": "^3.3.0",
+    "parallelshell": "^3.0.2",
+    "rimraf": "^2.6.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
