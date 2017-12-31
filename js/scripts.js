@@ -17,11 +17,11 @@ $(function() {
 
         function createColumn() {
             // CREATING COMPONENTS OF COLUMNS
-            var $column = $('<div>').addClass('column');
+            var $column = $('<div>').addClass('column col-md-4 col-lg-4 my-column-style');
             var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
             var $columnCardList = $('<ul>').addClass('column-card-list');
-            var $columnDelete = $('<button>').addClass('btn-delete').text('x');
-            var $columnAddCard = $('<button>').addClass('add-card').text('Add a card');
+            var $columnDelete = $('<button>').addClass('btn-delete btn btn-danger').text('x');
+            var $columnAddCard = $('<button>').addClass('add-card btn btn-success').text('Add a card');
 
             // ADDING EVENTS
             $columnDelete.click(function() {
@@ -60,7 +60,7 @@ $(function() {
         function createCard() {
             var $card = $('<li>').addClass('card');
             var $cardDescription = $('<p>').addClass('card-description').text(self.description);
-            var $cardDelete = $('<button>').addClass('btn-delete').text('x');
+            var $cardDelete = $('<button>').addClass('btn-delete btn btn-danger').text('x');
 
             $cardDelete.click(function() {
                 self.removeCard();
